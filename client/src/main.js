@@ -11,6 +11,11 @@ import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
+
+window.$ = require('jquery')
+window.JQuery = require('jquery')
 
 Vue.config.productionTip = false
 

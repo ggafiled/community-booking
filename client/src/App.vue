@@ -1,12 +1,8 @@
 <template>
-  <v-container>
+  <v-layout id="layout" style="background-color:#fafafa;">
     <Sidebar />
-    <v-content>
-      <v-container fluid style="color:#fafafa;">
-        <router-view></router-view>
-      </v-container>
-    </v-content>
-  </v-container>
+    <router-view></router-view>
+  </v-layout>
 </template>
 
 <script>
@@ -19,3 +15,10 @@
   }
 
 </script>
+<style>
+  .layout {
+    width: 100vw;
+    height: 100vh;
+  }
+
+</style>
