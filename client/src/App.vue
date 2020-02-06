@@ -1,14 +1,12 @@
 <template>
-  <v-app id="app">
-    <v-app-bar app>
-      <Sidebar />
-    </v-app-bar>
+  <v-container>
+    <Sidebar />
     <v-content>
-      <v-container fluid>
+      <v-container fluid style="color:#fafafa;">
         <router-view></router-view>
       </v-container>
     </v-content>
-  </v-app>
+  </v-container>
 </template>
 
 <script>
