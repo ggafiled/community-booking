@@ -4,12 +4,19 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
 
+Vue.use(BootstrapVue)
 Vue.use(Vuetify)
+Vue.use(Buefy)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
