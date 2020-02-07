@@ -1,7 +1,8 @@
 <template>
-    <v-navigation-drawer id="navigation-drawer" fixed mini-variant-width="60" mini-variant="true" permanent height="100vh">
+ <v-flex style="margin:0;max-width:56px;padding:0;">
+      <v-navigation-drawer id="navigation-drawer" clipped mini-variant-width="60" permanent>
       <v-list-item class="px-2">
-        <b-tooltip type="is-dark" position="is-right" label="Your profile" animated delay="100" style="position:fixed;">
+        <b-tooltip type="is-dark" position="is-right" label="Your profile" animated style="position:fixed;">
           <v-list-item-avatar>
             <v-img src="https://miro.medium.com/fit/c/210/210/1*cpAB54ovIg7HQ3OTXZkSmA.jpeg"></v-img>
           </v-list-item-avatar>
@@ -12,18 +13,19 @@
 
       <v-list>
         <v-list-item link v-for="item in items" :key="item.title">
-          <b-tooltip type="is-dark" position="is-right" :label="item.title" animated delay="100">
+          <b-tooltip type="is-dark" position="is-right" :label="item.title" animated>
             <a>
               <router-link tag="li" :to="item.to">
-                <v-span link>
+                <span link>
                   <v-icon style="color:#bdbdbd;">{{ item.icon }}</v-icon>
-                </v-span>
+                </span>
               </router-link>
             </a>
           </b-tooltip>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+ </v-flex>
 </template>
 <script>
   export default {
@@ -56,10 +58,6 @@
     font-weight: 500;
   }
 
-  b-tooltip {
-    position: fixed;
-  }
-
   li,
   a {
     text-decoration: none;
@@ -67,7 +65,7 @@
   }
 
   #navigation-drawer {
-    height: 100vh;
+    height: 100%;
   }
 
 </style>

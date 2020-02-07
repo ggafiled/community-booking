@@ -13,6 +13,7 @@
       Sidebar
     }
   }
+
 </script>
 <style>
   .layout {

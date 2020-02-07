@@ -1,49 +1,74 @@
 <template>
-  <div class="container">
-    <date-picker v-model="time1" type="date" placeholder="Select your appointment" @onClick="show"></date-picker>
-    <FullCalendar defaultView="dayGridMonth" :plugins="calendarPlugins" height='parent' selectable=false navLinks=true
-      nowIndicator=true :header="header"/>
-  </div>
+  <v-container fluid>
+    <v-card class="p-5 rounded-lg">
+      <v-flex text-center justify-center>
+        <v-text-field v-model="time1" placeholder="Typing your appointment date" @keydown.enter="gotoDate">
+
+        </v-text-field>
+        <full-calendar ref="calendar" :events="calendarEvents"></full-calendar>
+
+      </v-flex>
+    </v-card>
+  </v-container>
+
 </template>
 <script>
-  import FullCalendar from '@fullcalendar/vue'
-  import dayGridPlugin from '@fullcalendar/daygrid'
-  import timeGridPlugin from '@fullcalendar/timegrid'
-  import interactionPlugin from '@fullcalendar/interaction'
-  import DatePicker from 'vue2-datepicker';
-
+  import moment from 'moment';
+  import {
+    FullCalendar
+  } from 'vue-full-calendar'
   export default {
     components: {
       FullCalendar, // make the <FullCalendar> tag available
-      DatePicker
+
+    },
+    ready: function () {
+      var self = this
+      self.cal = $(self.$el)
+      show()
     },
     data() {
       return {
         time1: null,
-        calendarPlugins: [
-          dayGridPlugin,
-          dayGridPlugin,
-          timeGridPlugin,
-          interactionPlugin
-        ],
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        calendarEvents: [ // initial event data
+        calendarEvents: [{
+            id: 1,
+            title: 'event1',
+            start: moment().hours(12).minutes(0),
+          },
           {
-            title: 'Event Now',
-            start: new Date()
-          }
-        ]
+            id: 2,
+            title: 'event2',
+            start: moment().add(-1, 'days'),
+            end: moment().add(1, 'days'),
+            allDay: true,
+          },
+          {
+            id: 3,
+            title: 'event3',
+            start: moment().add(2, 'days'),
+            end: moment().add(2, 'days').add(6, 'hours'),
+            allDay: false,
+          },
+        ],
       }
     },
     methods: {
-      show(date){
-        console.log('click')
-        console.log(date)
+      gotoDate(e) {
+        console.log(this.time1)
+        this.$refs.fullCalendar('gotoDate', this.time1);
       }
+    },
+    computed: {
+      eventSources() {
+        const self = this;
+        return [{
+          events(start, end, timezone, callback) {
+            setTimeout(() => {
+              callback(self.events.filter(() => Math.random() > 0.5));
+            }, 1000);
+          },
+        }, ];
+      },
     },
   }
 
