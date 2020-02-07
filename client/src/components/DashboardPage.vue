@@ -1,14 +1,14 @@
 <template>
   <v-container fluid>
-    <v-card class="p-5 rounded-lg">
       <v-flex text-center justify-center>
-        <v-text-field v-model="time1" placeholder="Typing your appointment date" @keydown.enter="gotoDate">
-
+        <v-text-field v-model="time1" @keydown.enter="gotoDate">
+          <template v-slot:label>
+          What about <strong>icon</strong> here? <v-icon style="vertical-align: middle">find_in_page</v-icon>
+        </template>
         </v-text-field>
         <full-calendar ref="calendar" :events="calendarEvents"></full-calendar>
 
       </v-flex>
-    </v-card>
   </v-container>
 
 </template>

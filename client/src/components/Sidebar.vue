@@ -2,18 +2,18 @@
  <v-flex style="margin:0;max-width:56px;padding:0;">
       <v-navigation-drawer id="navigation-drawer" clipped mini-variant-width="60" permanent>
       <v-list-item class="px-2">
-        <b-tooltip type="is-dark" position="is-right" label="Your profile" animated style="position:fixed;">
+        <!-- <b-tooltip type="is-dark" position="is-right" label="Your profile" animated style="position:fixed;"> -->
           <v-list-item-avatar>
             <v-img src="https://miro.medium.com/fit/c/210/210/1*cpAB54ovIg7HQ3OTXZkSmA.jpeg"></v-img>
           </v-list-item-avatar>
-        </b-tooltip>
+        <!-- </b-tooltip> -->
       </v-list-item>
 
       <v-divider></v-divider>
 
       <v-list>
         <v-list-item link v-for="item in items" :key="item.title">
-          <b-tooltip type="is-dark" position="is-right" :label="item.title" animated>
+          <!-- <b-tooltip type="is-dark" position="is-right" :label="item.title" animated> -->
             <a>
               <router-link tag="li" :to="item.to">
                 <span link>
@@ -21,7 +21,7 @@
                 </span>
               </router-link>
             </a>
-          </b-tooltip>
+          <!-- </b-tooltip> -->
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
