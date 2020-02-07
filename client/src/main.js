@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
+import 'vue2-datepicker/index.css';
 
 window.$ = require('jquery')
 window.JQuery = require('jquery')

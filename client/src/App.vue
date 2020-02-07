@@ -1,8 +1,8 @@
 <template>
-  <v-layout id="layout" style="background-color:#fafafa;">
+  <div class="layout">
     <Sidebar />
     <router-view></router-view>
-  </v-layout>
+  </div>
 </template>
 
 <script>
@@ -13,12 +13,12 @@
       Sidebar
     }
   }
-
 </script>
 <style>
   .layout {
-    width: 100vw;
-    height: 100vh;
+    background-color: #fafafa;
+    min-width: 100vw;
+    min-height: 100vh;
   }
 
 </style>

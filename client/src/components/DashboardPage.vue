@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <date-picker v-model="time1" type="date" placeholder="Select your appointment" @onClick="show"></date-picker>
     <FullCalendar defaultView="dayGridMonth" :plugins="calendarPlugins" height='parent' selectable=false navLinks=true
       nowIndicator=true :header="header"/>
   </div>
@@ -9,13 +10,16 @@
   import dayGridPlugin from '@fullcalendar/daygrid'
   import timeGridPlugin from '@fullcalendar/timegrid'
   import interactionPlugin from '@fullcalendar/interaction'
+  import DatePicker from 'vue2-datepicker';
 
   export default {
     components: {
-      FullCalendar // make the <FullCalendar> tag available
+      FullCalendar, // make the <FullCalendar> tag available
+      DatePicker
     },
     data() {
       return {
+        time1: null,
         calendarPlugins: [
           dayGridPlugin,
           dayGridPlugin,
@@ -34,7 +38,13 @@
           }
         ]
       }
-    }
+    },
+    methods: {
+      show(date){
+        console.log('click')
+        console.log(date)
+      }
+    },
   }
 
 </script>
