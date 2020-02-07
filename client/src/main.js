@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import Vuetify, {
@@ -42,6 +43,19 @@ Vue.use(FullCalendar)
 Vue.use(BootstrapVue)
 Vue.use(Buefy)
 Vue.use(Vuetify)
+Vue.use(Vuex)
+
+router.beforeEach((to, from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/login', '/register'];
+  const authRequired = publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('user');
+
+  if (!authRequired && !loggedIn) {
+    return next('/login');
+  }
+  next();
+})
 
 new Vue({
   router,

@@ -36,6 +36,31 @@
             start: moment().hours(12).minutes(0),
           },
           {
+            id: 1,
+            title: 'event1',
+            start: moment().hours(12).minutes(0),
+          },
+          {
+            id: 1,
+            title: 'event1',
+            start: moment().hours(12).minutes(0),
+          },
+          {
+            id: 1,
+            title: 'event1',
+            start: moment().hours(12).minutes(0),
+          },
+          {
+            id: 1,
+            title: 'event1',
+            start: moment().hours(12).minutes(0),
+          },
+          {
+            id: 1,
+            title: 'event1',
+            start: moment().hours(12).minutes(0),
+          },
+          {
             id: 2,
             title: 'event2',
             start: moment().add(-1, 'days'),

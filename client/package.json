@@ -31,7 +31,8 @@
     "vue-full-calendar": "^2.7.0",
     "vue-router": "^3.0.1",
     "vue2-datepicker": "^3.3.0",
-    "vuetify": "^2.2.8"
+    "vuetify": "^2.2.8",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",

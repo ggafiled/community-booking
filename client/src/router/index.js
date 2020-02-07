@@ -1,15 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import AnnouncePage from '@/components/AnnouncePage'
 import LoginPage from '@/components/LoginPage'
 import DashboardPage from '@/components/DashboardPage'
 
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/',
+      redirect: 'login'
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: LoginPage
     },
@@ -17,6 +22,7 @@ export default new Router({
       path: '/dash',
       name: 'Dash',
       component: DashboardPage
-    }
+    },
+    { path: '*', redirect: '/' }
   ]
 })
