@@ -9,16 +9,18 @@ const passport = require("passport");
 const flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 const session = require('express-session');
-const redis = require('redis');
-const redisClient = redis.createClient();
-const redisStore = require('connect-redis')(session);
+// const redis = require('redis');
+// const redisClient = redis.createClient();
+// const redisStore = require('connect-redis')(session);
+var FileStore = require('session-file-store')(session);
+var fileStoreOptions = {};
 require('../config/passport')(passport);
 var app = express();
 app.use(morgan('combined'));
 
-redisClient.on('error', (err) => {
-  console.log('Redis error: ', err);
-});
+// redisClient.on('error', (err) => {
+//   console.log('Redis error: ', err);
+// });
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb', parameterLimit: 100000}));
@@ -30,7 +32,7 @@ app.use(
     secret: config.COOKIE.COOKIE_KEY,
     resave: true,
     saveUninitialized: true,
-    store: new redisStore({ host: 'localhost', port: 6379, client: redisClient, ttl: 86400 })
+    store: new FileStore(fileStoreOptions)
   })
 );
 

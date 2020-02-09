@@ -1,8 +1,9 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import Vuex from 'vuex'
 import App from './App'
+import Vuex from 'vuex'
+import Store from '@/store/index'
 import router from './router'
 import Vuetify, {
   VCard,
@@ -34,6 +35,7 @@ import 'fullcalendar/dist/fullcalendar.css'
 import 'vue2-datepicker/index.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
+
 window.$ = require('jquery')
 window.JQuery = require('jquery')
 
@@ -45,19 +47,8 @@ Vue.use(Buefy)
 Vue.use(Vuetify)
 Vue.use(Vuex)
 
-router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login', '/register'];
-  const authRequired = publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user');
-
-  if (!authRequired && !loggedIn) {
-    return next('/login');
-  }
-  next();
-})
-
 new Vue({
   router,
+  Store,
   render: h => h(App)
 }).$mount('#app');

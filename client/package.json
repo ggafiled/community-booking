@@ -19,6 +19,7 @@
     "@fullcalendar/timegrid": "^4.3.0",
     "@fullcalendar/vue": "^4.3.1",
     "@popperjs/core": "^2.0.5",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.4.0",
     "buefy": "^0.8.10",
