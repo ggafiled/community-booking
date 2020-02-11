@@ -6,7 +6,7 @@
           What about <strong>icon</strong> here? <v-icon style="vertical-align: middle">find_in_page</v-icon>
         </template>
         </v-text-field>
-        <full-calendar ref="calendar" :events="calendarEvents"></full-calendar>
+        <full-calendar ref="calendar" :events="calendarEvents" defaultView="month"></full-calendar>
 
       </v-flex>
   </v-container>
@@ -80,7 +80,7 @@
     methods: {
       gotoDate(e) {
         console.log(this.time1)
-        this.$refs.fullCalendar('gotoDate', this.time1);
+        this.$ref.fullCalendar('gotoDate', this.time1);
       }
     },
     computed: {

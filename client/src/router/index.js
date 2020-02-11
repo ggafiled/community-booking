@@ -3,11 +3,13 @@ import Router from 'vue-router'
 import AnnouncePage from '@/components/AnnouncePage'
 import store from '@/store/index.js'
 import LoginPage from '@/components/LoginPage'
+import LogoutPage from '@/components/LogoutPage'
 import DashboardPage from '@/components/DashboardPage'
 
 Vue.use(Router)
 
 let router = new Router({
+  saveScrollPosition: true,
   mode: 'history',
   routes: [
     {
@@ -26,6 +28,11 @@ let router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      component: LogoutPage
     },
     { path: '*', redirect: '/' }
   ]

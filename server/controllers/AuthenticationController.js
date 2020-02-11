@@ -30,9 +30,7 @@ module.exports = {
     },
     async logout(req, res) {
         req.logout();
-        res.status(200).send({
-            message: 'you are logged out!'
-        });
+        res.sendStatus(200);
 
     }
 }

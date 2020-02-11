@@ -1,10 +1,10 @@
 <template>
- <v-flex style="margin:0;max-width:56px;padding:0;" v-if="checkLogin">
+ <v-flex style="margin:0;max-width:56px;padding:0;" v-if="this.$store.getters.isLoggedIn">
       <v-navigation-drawer id="navigation-drawer" clipped mini-variant-width="60" permanent>
       <v-list-item class="px-2">
         <!-- <b-tooltip type="is-dark" position="is-right" label="Your profile" animated style="position:fixed;"> -->
           <v-list-item-avatar>
-            <v-img src="https://miro.medium.com/fit/c/210/210/1*cpAB54ovIg7HQ3OTXZkSmA.jpeg"></v-img>
+            <v-img :src="userInformation.u_imgUrl"></v-img>
           </v-list-item-avatar>
         <!-- </b-tooltip> -->
       </v-list-item>
@@ -46,13 +46,22 @@
             icon: 'mdi-account-group-outline',
             to: '/'
           },
-        ]
+           {
+            title: 'Logout',
+            icon: 'mdi-logout-variant',
+            to: '/logout'
+          },
+        ],
+        userInformation: {
+          u_imgUrl: this.$store.getters.userInformation.u_imgUrl || 'https://pickaface.net/gallery/avatar/20140501_004912_2217_comm.png'
+        }
       }
     },
     methods: {
-      checkLogin(){
-        return this.$store.getters.isLoggedIn;
-      }
+
+    },
+    created() {
+      console.log(this.$store.getters.userInformation)
     },
   }
 
