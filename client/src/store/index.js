@@ -8,8 +8,8 @@ Vue.use(Vuex)
 // the app starts up
 const state = {
   status: '',
-  auth: localStorage.getItem('auth') || '',
-  user: [],
+  auth: !!localStorage.getItem('auth') || false,
+  user: {},
 }
 
 // Create an object storing various mutations. We will write the mutation
@@ -25,11 +25,11 @@ const mutations = {
   auth_error(state) {
     state.status = 'error'
   },
-  logout_success(state, user) {
+  logout_success(state) {
     state.status = 'success'
     state.user = {}
   },
-  logout_error(state, user) {
+  logout_error(state) {
     state.status = 'error'
   }
 }
@@ -68,7 +68,7 @@ const actions = {
       axios.post('http://localhost:8081/logout')
         .then(res => {
           localStorage.removeItem('auth')
-          commit('logout_success', user)
+          commit('logout_success')
           resolve(res)
         })
         .catch(err => {
@@ -81,7 +81,7 @@ const actions = {
 }
 
 const getters = {
-  isLoggedIn: state => !!state.auth,
+  isLoggedIn: state => state.auth,
   authStatus: state => state.status,
   userInformation: state => state.user,
 }
