@@ -27,9 +27,10 @@ const mutations = {
 
 const actions = {
     login({ commit }, user) {
+        console.log(user)
         return new Promise((resolve, reject) => {
             commit('auth_request')
-            axios({ url: 'http://localhost:8081/login', data: user, method: 'POST' })
+            axios.post('http://localhost:8081/login',{u_email:user.u_email,u_pwd:user.u_pwd})
                 .then(res => {
                     const user = res.data.user
                     localStorage.setItem('user', user)

@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid login-clean">
-    <form>
+    <form @submit.prevent="login">
       <h2 class="sr-only">Login Form</h2>
       <div class="illustration">
         <a href="/login" class="navbar-brand justify-content-center">
@@ -20,7 +20,7 @@
         v-model="u_pwd"
         placeholder="Password"
       />
-      <button class="btn btn-primary btn-block" type="submit" @submit.prevent="login">Log In</button>
+      <button class="btn btn-primary btn-block" type="submit">Log In</button>
 
       <a href="#" class="forgot p-3">Forgot your email or password?</a>
     </form>
@@ -36,11 +36,11 @@ export default {
   },
   methods: {
     login: function() {
-      let email = this.u_email;
-      let password = this.u_pwd;
+      let u_email = this.u_email;
+      let u_pwd = this.u_pwd;
       this.$store
-        .dispatch("login", { email, password })
-        .then(() => this.$router.push("/"))
+        .dispatch("login", { u_email, u_pwd })
+        .then(() => this.$router.push("/dash"))
         .catch(err => console.log(err));
     }
   }

@@ -1,5 +1,5 @@
 <template>
- <v-flex style="margin:0;max-width:56px;padding:0;" v-if="checkLogin===true">
+ <v-flex style="margin:0;max-width:56px;padding:0;" v-if="checkLogin">
       <v-navigation-drawer id="navigation-drawer" clipped mini-variant-width="60" permanent>
       <v-list-item class="px-2">
         <!-- <b-tooltip type="is-dark" position="is-right" label="Your profile" animated style="position:fixed;"> -->
@@ -51,7 +51,7 @@
     },
     methods: {
       checkLogin(){
-        return !!localStorage.getItem('user');
+        return this.$store.getters.isLoggedIn;
       }
     },
   }

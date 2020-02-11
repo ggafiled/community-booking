@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import Vuex from 'vuex'
-import Store from '@/store/index'
 import router from './router'
+import store from '@/store/index'
+import axios from 'axios'
 import Vuetify, {
   VCard,
   VImg,
@@ -37,6 +38,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 
 window.$ = require('jquery')
+window.axios = axios
 window.JQuery = require('jquery')
 
 Vue.config.productionTip = false
@@ -49,6 +51,6 @@ Vue.use(Vuex)
 
 new Vue({
   router,
-  Store,
+  store,
   render: h => h(App)
 }).$mount('#app');
