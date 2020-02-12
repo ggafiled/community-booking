@@ -30,6 +30,7 @@
     "v-tooltip": "^2.0.3",
     "vue": "^2.6.11",
     "vue-full-calendar": "^2.7.0",
+    "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.1",
     "vue2-datepicker": "^3.3.0",
     "vuetify": "^2.2.8",

@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import AnnouncePage from '@/components/AnnouncePage'
 import store from '@/store/index.js'
 import LoginPage from '@/components/LoginPage'
-import DashboardPage from '@/components/DashboardPage'
+import HomePage from '@/components/HomePage'
+import CalendarPage from '@/components/CalendarPage'
 
 Vue.use(Router)
 
@@ -12,8 +13,13 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'Root',
       redirect: '/login'
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: HomePage
     },
     {
       path: '/login',
@@ -21,9 +27,9 @@ let router = new Router({
       component: LoginPage
     },
     {
-      path: '/dash',
-      name: 'Dash',
-      component: DashboardPage,
+      path: '/calendar',
+      name: 'Calendar',
+      component: CalendarPage,
       meta: {
         requiresAuth: true
       }
@@ -31,7 +37,10 @@ let router = new Router({
     {
       path: '/announce',
       name: 'Announce',
-      component: AnnouncePage
+      component: AnnouncePage,
+      meta: {
+        requiresAuth: true
+      }
     },
     { path: '*', redirect: '/' }
   ]

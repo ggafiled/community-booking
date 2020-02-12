@@ -26,6 +26,7 @@ import {
   BootstrapVue,
   IconsPlugin
 } from 'bootstrap-vue'
+import VueProgressBar from 'vue-progressbar'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import 'vuetify/dist/vuetify.min.css'
@@ -43,6 +44,21 @@ window.JQuery = require('jquery')
 
 Vue.config.productionTip = false
 
+const options = {
+  color: '#bffaf3',
+  failedColor: '#874b4b',
+  thickness: '5px',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'top',
+  inverse: false
+}
+
+Vue.use(VueProgressBar, options)
 Vue.use(FullCalendar)
 Vue.use(BootstrapVue)
 Vue.use(Buefy)

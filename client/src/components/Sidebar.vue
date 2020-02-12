@@ -23,10 +23,10 @@
           </a>
           <!-- </b-tooltip> -->
         </v-list-item>
-        <v-list-item v-if="this.$store.getters.isLoggedIn" @click="logout">
-            <span link>
-              <v-icon style="color:#bdbdbd;">mdi-logout-variant</v-icon>
-            </span>
+        <v-list-item @click="logout">
+          <span link>
+            <v-icon style="color:#bdbdbd;">mdi-logout-variant</v-icon>
+          </span>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -39,7 +39,12 @@
         items: [{
             title: 'Home',
             icon: 'mdi-home-city',
-            to: '/dash'
+            to: '/home'
+          },
+          {
+            title: 'Calendar',
+            icon: 'mdi-alarm',
+            to: '/calendar'
           },
           {
             title: 'My Account',
@@ -53,24 +58,28 @@
           }
         ],
         userInformation: {
-          u_imgUrl: this.$store.state.user.u_imgUrl ||
+          u_imgUrl: this.$store.getters.userInformation.u_imgUrl ||
             'https://pickaface.net/gallery/avatar/20140501_004912_2217_comm.png'
         }
       }
     },
     methods: {
-       logout: function () {
-         this.$store
+      logout: function () {
+        this.$store
           .dispatch("logout")
-          .then(() => this.$router.push({ name: 'Home' }))
+          .then(() => this.$router.push({
+            name: 'Home'
+          }))
           .catch(err => {
-            this.$router.push({ name: 'Home' })
+            this.$router.push({
+              name: 'Home'
+            })
             console.log(err)
           });
       }
     },
+    
   }
-
 </script>
 <style scoped>
   * {

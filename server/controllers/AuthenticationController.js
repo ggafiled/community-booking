@@ -13,7 +13,7 @@ function jwtSignUser(user) {
 module.exports = {
     async login(req, res) {
         res.send({
-            user: req.user,
+            user: JSON.parse(JSON.stringify(req.user)),
             isAuthenticated: req.isAuthenticated()
         })
 

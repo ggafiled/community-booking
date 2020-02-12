@@ -34,13 +34,13 @@
             u_email,
             u_pwd
           })
-          .then(() => this.$router.push("/dash"))
+          .then(() => this.$router.push("/home"))
           .catch(err => console.log(err));
       }
     },
     created() {
       if (this.$store.getters.isLoggedIn) {
-        this.$router.push("/dash")
+        this.$router.push("/home")
       }
     }
   };

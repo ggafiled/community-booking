@@ -9,7 +9,7 @@ Vue.use(Vuex)
 const state = {
   status: '',
   auth: localStorage.getItem('auth') || false,
-  user: localStorage.getItem('user') || null,
+  user: JSON.parse(localStorage.getItem('user')),
 }
 
 // Create an object storing various mutations. We will write the mutation
@@ -17,10 +17,10 @@ const mutations = {
   auth_request(state) {
     state.status = 'loading'
   },
-  auth_success(state,user) {
+  auth_success(state,isAuthenticated,user) {
     state.status = 'success'
     state.user = user
-    state.auth = user
+    state.auth = isAuthenticated
   },
   auth_error(state) {
     state.status = 'error'
@@ -47,12 +47,15 @@ const actions = {
           u_pwd: user.u_pwd
         })
         .then(res => {
-          const user = res.data.user
-          localStorage.setItem('auth', user)
+          console.log("auth_request")
+          console.log(res.data.user)
+          const user = JSON.stringify(res.data.user)
+          const isAuthenticated = res.data.isAuthenticated
+          localStorage.setItem('auth', isAuthenticated)
           localStorage.setItem('user', user)
           // // Add the following line:
           // axios.defaults.headers.common['Authorization'] = token
-          commit('auth_success',user)
+          commit('auth_success',isAuthenticated,user)
           resolve(res)
         })
         .catch(err => {
