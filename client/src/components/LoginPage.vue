@@ -7,9 +7,9 @@
           <img src="../assets/navbar.png" height="48" alt="CoolBrand" />
         </a>
       </div>
-      <input class="form-control shadow-sm p-3 mb-4 bg-white text-dark rounded" type="text" v-model="u_email"
+      <v-text-field solo type="text" v-model="u_email"
         placeholder="Username" autofocus />
-      <input class="form-control shadow-sm p-3 mb-4 bg-white text-dark rounded" type="password" v-model="u_pwd"
+      <v-text-field solo type="password" v-model="u_pwd"
         placeholder="Password" />
       <button class="btn btn-primary btn-block" type="submit">Log In</button>
 

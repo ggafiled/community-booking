@@ -8,8 +8,9 @@ Vue.use(Vuex)
 // the app starts up
 const state = {
   status: '',
-  auth: localStorage.getItem('auth') || false,
-  user: JSON.parse(localStorage.getItem('user')),
+  auth: !!localStorage.getItem('auth') || false,
+  user: JSON.parse(localStorage.getItem('user')) || null,
+  routePath: ""
 }
 
 // Create an object storing various mutations. We will write the mutation
@@ -32,6 +33,9 @@ const mutations = {
   },
   logout_error(state) {
     state.status = 'error'
+  },
+  route_change(state,path) {
+    state.routePath = path
   }
 }
 
@@ -84,6 +88,12 @@ const actions = {
           localStorage.removeItem('user')
           reject(err)
         })
+    })
+  },
+  routeChange({commit},path){
+    return new Promise((resolve, reject)=>{
+      commit('route_change',path.path)
+      resolve(path)
     })
   }
 }

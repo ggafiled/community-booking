@@ -1,17 +1,26 @@
 <template>
   <v-container fluid>
-      <p class="card-title">{{name}}</p>
+    <div>
+      <p class="card-title mb-3 ml-2">{{name}}</p>
       <div class="d-flex flex-wrap mb-3">
         <v-card class="child" v-for="item in document.length" :key="item" outlined ripple light hover>
           <div class="overline mb-4 mt-4 ml-4">OVERLINE</div>
-          <v-list-item three-line>
-            <v-list-item-content>
-              <v-list-item-title class="headline mb-1">Headline 5</v-list-item-title>
-            </v-list-item-content>
+          <v-list-item>
+            <div class="justify-space-around mx-auto justify-center" style="width:100%;align-items: center;">
+              <v-avatar size="36">
+                <v-img src="https://randomuser.me/api/portraits/med/women/85.jpg"></v-img>
+              </v-avatar>
+              <v-avatar size="36">
+                <v-img src="https://randomuser.me/api/portraits/med/women/85.jpg"></v-img>
+              </v-avatar>
+              <v-avatar size="36">
+                <v-img src="https://randomuser.me/api/portraits/med/women/85.jpg"></v-img>
+              </v-avatar>
+            </div>
           </v-list-item>
-
         </v-card>
       </div>
+    </div>
   </v-container>
 </template>
 <script>

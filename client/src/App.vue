@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Sidebar />
+    <Sidebar/>
     <vue-progress-bar></vue-progress-bar>
     <router-view></router-view>
   </div>

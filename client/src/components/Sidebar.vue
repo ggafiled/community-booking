@@ -1,5 +1,5 @@
 <template>
-  <v-flex style="margin:0;max-width:56px;padding:0;" v-if="this.$store.getters.isLoggedIn">
+  <v-flex style="margin:0;max-width:56px;padding:0;" v-if="this.$store.state.auth === true">
     <v-navigation-drawer id="navigation-drawer" clipped mini-variant-width="60" permanent>
       <v-list-item class="px-2">
         <!-- <b-tooltip type="is-dark" position="is-right" label="Your profile" animated style="position:fixed;"> -->
@@ -12,17 +12,17 @@
       <v-divider></v-divider>
 
       <v-list>
-        <v-list-item link v-for="item in items" :key="item.title">
-          <!-- <b-tooltip type="is-dark" position="is-right" :label="item.title" animated> -->
-          <a>
-            <router-link tag="li" :to="item.to">
+        <!-- <b-tooltip type="is-dark" position="is-right" :label="item.title" animated> -->
+        <a>
+          <router-link tag="li" :to="item.to" v-for="item in items" :key="item.title">
+            <v-list-item link :class="item.to == $store.state.routePath ? 'bg-secondary text-white' : ''">
               <span link>
                 <v-icon style="color:#bdbdbd;">{{ item.icon }}</v-icon>
               </span>
-            </router-link>
-          </a>
-          <!-- </b-tooltip> -->
-        </v-list-item>
+            </v-list-item>
+          </router-link>
+        </a>
+        <!-- </b-tooltip> -->
         <v-list-item @click="logout">
           <span link>
             <v-icon style="color:#bdbdbd;">mdi-logout-variant</v-icon>
@@ -47,9 +47,9 @@
             to: '/calendar'
           },
           {
-            title: 'My Account',
-            icon: 'mdi-account',
-            to: '/'
+            title: 'Announce',
+            icon: 'mdi-card-bulleted-outline',
+            to: '/announce'
           },
           {
             title: 'Users',
@@ -68,18 +68,19 @@
         this.$store
           .dispatch("logout")
           .then(() => this.$router.push({
-            name: 'Home'
+            name: 'Root'
           }))
           .catch(err => {
             this.$router.push({
-              name: 'Home'
+              name: 'Root'
             })
             console.log(err)
           });
       }
     },
-    
+
   }
+
 </script>
 <style scoped>
   * {
