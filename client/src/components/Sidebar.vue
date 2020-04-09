@@ -39,7 +39,7 @@
         items: [{
             title: 'Home',
             icon: 'mdi-home-city',
-            to: '/home'
+            to: `/@${this.$store.getters.userInformation.u_name}`
           },
           {
             title: 'Calendar',

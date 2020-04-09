@@ -3,6 +3,7 @@
     <div>
       <p class="card-title mb-3 ml-2">{{name}}</p>
       <div class="d-flex flex-wrap mb-3">
+        <RoomCardComponentNew/>
         <v-card class="child" v-for="item in document.length" :key="item" outlined ripple light hover>
           <div class="overline mb-4 mt-4 ml-4">OVERLINE</div>
           <v-list-item>
@@ -24,8 +25,12 @@
   </v-container>
 </template>
 <script>
+  import RoomCardComponentNew from '@/components/helper/RoomCardComponentNew'
   export default {
-    props: ['name', 'document']
+    props: ['name', 'document'],
+    components:{
+      RoomCardComponentNew
+    }
   }
 
 </script>

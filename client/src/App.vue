@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
-    <Sidebar/>
     <vue-progress-bar></vue-progress-bar>
+    <Sidebar/>
     <router-view></router-view>
   </div>
 </template>

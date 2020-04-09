@@ -17,7 +17,7 @@ let router = new Router({
       redirect: '/login'
     },
     {
-      path: '/home',
+      path: '/@:username',
       name: 'Home',
       component: HomePage,
       meta: {

@@ -25,6 +25,11 @@
         u_pwd: ""
       };
     },
+    computed: {
+      getUser() {
+        return this.$store.getters.userInformation.u_name
+      }
+    },
     methods: {
       login: function () {
         let u_email = this.u_email;
@@ -34,13 +39,13 @@
             u_email,
             u_pwd
           })
-          .then(() => this.$router.push("/home"))
+          .then(() => this.$router.push(`/@${getUser()}`))
           .catch(err => console.log(err));
       }
     },
     created() {
       if (this.$store.getters.isLoggedIn) {
-        this.$router.push("/home")
+        this.$router.push(`/@${getUser()}`)
       }
     }
   };
